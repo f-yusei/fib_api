@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\FibonacciRequest;
 
 class FibonacciController extends Controller
 {
-    public function fibonacci(Request $request)
+    public function fibonacci(FibonacciRequest $request)
     {   
         $n = $request->query('n'); 
         $fibonacciNumber = $this->calculateFibonacci($n);
