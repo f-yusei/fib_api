@@ -1,0 +1,74 @@
+openapi: 3.0.0
+info:
+  title: Fibonacci API
+  description: API to calculate Fibonacci numbers
+  version: 1.0.0
+servers:
+  - url: http://127.0.0.1:8000/
+    description: Local server
+paths:
+  /api/fibonacci:
+    get:
+      summary: Get Fibonacci number
+      description: Returns the Fibonacci number for the given index `n`.
+      parameters:
+        - in: query
+          name: n
+          required: true
+          schema:
+            type: integer
+            minimum: 0
+          description: The index `n` for which to calculate the Fibonacci number.
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  n:
+                    type: integer
+                    description: The index `n` for which the Fibonacci number is calculated.
+                    example: 5
+                  fibonacci:
+                    type: integer
+                    description: The Fibonacci number at index `n`.
+                    example: 5
+        '400':
+          description: Bad request due to invalid input
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  message:
+                    type: string
+                    example: Invalid request parameters.
+                  errors:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
+                      example: ["n must be a non-negative integer"]
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  errors:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
+                      example: ["n is required", "n must be an integer", "n must be at least 0"]
