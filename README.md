@@ -3,8 +3,8 @@
 このプロジェクトは、Laravelで構成されたREST APIです。指定したn番目のフィボナッチ数を返すエンドポイントを提供します。
 
 ## プロジェクト情報
-- PHP バージョン: 8.3
-- Laravel バージョン: 10.x
+- PHP: 8.3
+- Laravel: 10.x
 - デプロイ環境: Heroku
 - デプロイ先URL: https://infinite-retreat-29466-b58771f08bbf.herokuapp.com
 
@@ -66,11 +66,6 @@ https://infinite-retreat-29466-b58771f08bbf.herokuapp.com/api/fib/?n={n}
 `{n}`を取得したいフィボナッチ数のインデックスに置き換えてください。
 
 # 環境構築と実行方法
-### 前提条件
-- PHP バージョン: 8.3.7
-- Composer
-- Laravel
-- Git
 
 ## 手順
 ### リポジトリをクローン
