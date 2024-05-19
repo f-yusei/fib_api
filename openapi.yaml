@@ -1,0 +1,71 @@
+openapi: 3.0.0
+info:
+  title: Fibonacci API
+  description: フィボナッチ数を計算するAPI
+  version: 1.0.0
+servers:
+  - url: http://127.0.0.1:8000/
+    description: ローカル
+  - url: https://infinite-retreat-29466-b58771f08bbf.herokuapp.com/
+    description: 本番環境
+paths:
+  /api/fibonacci:
+    get:
+      summary: フィボナッチ数を取得する
+      description: 与えられた `n` 番目のフィボナッチ数を`文字列`で返す
+      parameters:
+        - in: query
+          name: n
+          required: true
+          schema:
+            type: integer
+            minimum: 0
+          description: 何番目のフィボナッチ数を取得するかを`n`で指定
+      responses:
+        '200':
+          description: 成功したレスポンス
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+                    description: "`n`番目のフィボナッチ数を文字列で返す"
+                    example: "21"
+        '400':
+          description: 無効な入力による不正リクエスト
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  errors:
+                    type: object
+                    properties:
+                      n:
+                        type: array
+                        items:
+                          type: string
+                        example: ["パラメータnは必須です。"]
+        '422':
+          description: バリデーションエラー
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: error
+                  errors:
+                    type: object
+                    properties:
+                      n:
+                        type: array
+                        items:
+                          type: string
+                        example: ["パラメータnは整数でなければなりません。"]
