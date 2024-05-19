@@ -9,7 +9,7 @@ servers:
   - url: https://infinite-retreat-29466-b58771f08bbf.herokuapp.com/
     description: 本番環境
 paths:
-  /api/fibonacci:
+  /api/fib:
     get:
       summary: フィボナッチ数を取得する
       description: 与えられた `n` 番目のフィボナッチ数を`文字列`で返す
