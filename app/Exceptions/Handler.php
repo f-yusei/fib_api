@@ -6,22 +6,18 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
 use Throwable;
 
+/**
+ * Class Handler
+ * @package App\Exceptions
+ */
 class Handler extends ExceptionHandler
 {
-    /**
-     * The list of the inputs that are never flashed to the session on validation exceptions.
-     *
-     * @var array<int, string>
-     */
     protected $dontFlash = [
         'current_password',
         'password',
         'password_confirmation',
     ];
 
-    /**
-     * Register the exception handling callbacks for the application.
-     */
     public function register(): void
     {
         $this->reportable(function (Throwable $e) {
@@ -29,6 +25,12 @@ class Handler extends ExceptionHandler
         });
     }
 
+    /**
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param ValidationException $exception
+     * @return \Illuminate\Http\JsonResponse
+     */
     protected function invalidJson($request, ValidationException $exception)
     {
         $errors = $exception->errors();
@@ -44,6 +46,12 @@ class Handler extends ExceptionHandler
         ], $status);
     }
 
+    /**
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param Throwable $exception
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function render($request, Throwable $exception)
     {
         if ($exception instanceof ValidationException) {
