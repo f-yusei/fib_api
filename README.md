@@ -1,6 +1,6 @@
 # フィボナッチ数REST API
 
-このプロジェクトは、LaravelフレームワークでビルドされたシンプルなREST APIです。指定したインデックスのフィボナッチ数を返す1つのエンドポイントを提供します。
+このプロジェクトは、LaravelフレームワークでビルドされたシンプルなREST APIです。指定したのフィボナッチ数を返す1つのエンドポイントを提供します。
 
 ## プロジェクト情報
 - PHP バージョン: 8.3
@@ -87,7 +87,7 @@ composer install
 
 ### 環境ファイルを設定
 
-.env.example を .env にコピーし、必要に応じて設定を調整します。
+`.env.example`を.`env`にコピーします。
 
 ```
 cp .env.example .env
@@ -103,7 +103,10 @@ php artisan key:generate
 ```
 php artisan serve
 ```
-ブラウザで http://localhost:8000 にアクセスして、アプリケーションが起動していることを確認します。
+curlコマンドでサーバーが起動していることを確認できたら環境構築成功です。
+```
+curl -X GET -H "Content-Type: application/json" "http://127.0.0.1:8000/api/fib?n=8"
+```
 
 ## テストの実行方法
 #### PHPUnitを使用したユニットテスト
