@@ -1,16 +1,18 @@
 openapi: 3.0.0
 info:
   title: Fibonacci API
-  description: API to calculate Fibonacci numbers
+  description: フィボナッチ数を計算するAPI
   version: 1.0.0
 servers:
   - url: http://127.0.0.1:8000/
-    description: Local server
+    description: ローカル
+  - url: https://infinite-retreat-29466-b58771f08bbf.herokuapp.com/
+    description: 本番環境
 paths:
   /api/fibonacci:
     get:
-      summary: Get Fibonacci number
-      description: Returns the Fibonacci number for the given index `n`.
+      summary: フィボナッチ数を取得する
+      description: 与えられた `n` 番目のフィボナッチ数を`文字列`で返す
       parameters:
         - in: query
           name: n
@@ -18,25 +20,21 @@ paths:
           schema:
             type: integer
             minimum: 0
-          description: The index `n` for which to calculate the Fibonacci number.
+          description: 何番目のフィボナッチ数を取得するかを`n`で指定
       responses:
         '200':
-          description: Successful response
+          description: 成功したレスポンス
           content:
             application/json:
               schema:
                 type: object
                 properties:
-                  n:
-                    type: integer
-                    description: The index `n` for which the Fibonacci number is calculated.
-                    example: 5
-                  fibonacci:
-                    type: integer
-                    description: The Fibonacci number at index `n`.
-                    example: 5
+                  result:
+                    type: string
+                    description: "`n`番目のフィボナッチ数を文字列で返す"
+                    example: "21"
         '400':
-          description: Bad request due to invalid input
+          description: 無効な入力による不正リクエスト
           content:
             application/json:
               schema:
@@ -45,18 +43,16 @@ paths:
                   status:
                     type: string
                     example: error
-                  message:
-                    type: string
-                    example: Invalid request parameters.
                   errors:
                     type: object
-                    additionalProperties:
-                      type: array
-                      items:
-                        type: string
-                      example: ["n must be a non-negative integer"]
+                    properties:
+                      n:
+                        type: array
+                        items:
+                          type: string
+                        example: ["パラメータnは必須です。"]
         '422':
-          description: Validation error
+          description: バリデーションエラー
           content:
             application/json:
               schema:
@@ -67,8 +63,9 @@ paths:
                     example: error
                   errors:
                     type: object
-                    additionalProperties:
-                      type: array
-                      items:
-                        type: string
-                      example: ["n is required", "n must be an integer", "n must be at least 0"]
+                    properties:
+                      n:
+                        type: array
+                        items:
+                          type: string
+                        example: ["パラメータnは整数でなければなりません。"]
