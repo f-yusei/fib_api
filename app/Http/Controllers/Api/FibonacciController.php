@@ -17,15 +17,15 @@ class FibonacciController extends Controller
 
     private function calculateFibonacci($n)
     {
-        $fibonacci = [];
-        $fibonacci[0] = 0;
-        $fibonacci[1] = 1;
+        $a = 1;
+        $b = 0;
 
-        for ($i = 2; $i <= $n; $i++) {
-            $fibonacci[$i] = bcadd($fibonacci[$i - 1], $fibonacci[$i - 2]);
+        for ($i = 1; $i <= $n; $i++) {
+            $temp = $a;
+            $a = bcadd($a, $b);
+            $b = $temp;
         }
 
-        return $fibonacci[$n];
+        return $b;
     }
 }
-
