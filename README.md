@@ -6,6 +6,7 @@
 - PHP: 8.3
 - Laravel: 10.x
 - デプロイ環境: Heroku
+- CI/CD: GitHub Actions
 - デプロイ先URL: https://infinite-retreat-29466-b58771f08bbf.herokuapp.com
 
 ## ディレクトリ構成
