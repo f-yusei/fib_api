@@ -39,12 +39,13 @@
 └── README.md
 ```
 
-- `app/Http/Controllers/Api/FibonacciController.php`: フィボナッチ数の計算ロジックが含まれます。
-- `app/Requests/FibonacciRequest.php`: フィボナッチ数の要求の検証ロジックが含まれます。
-- `routes/api.php`: API エンドポイントのルートが定義されています。
-- `tests/Unit/FibonacciTest.php`: フィボナッチ機能のユニットテストが含まれます。
-- `Procfile`: Herokuでアプリケーションのプロセスの実行方法を指定するためのファイルです。
-- その他の Laravel 標準ディレクトリとファイルもプロジェクトに含まれています。
+- `app/Http/Controllers/Api/FibonacciController.php`: フィボナッチ数の計算ロジック
+- `app/Requests/FibonacciRequest.php`: フィボナッチ数の要求の検証ロジック
+- `routes/api.php`: API エンドポイントのルートの定義ファイル
+- `tests/Unit/FibonacciTest.php`: フィボナッチAPIのユニットテスト
+- `Procfile`: Herokuでアプリケーションのプロセスの実行方法を指定するためのファイル
+  
+- その他の Laravel 標準ディレクトリとファイルもプロジェクトに含まれています
   
 
 ## APIエンドポイント
@@ -53,17 +54,17 @@
 GET /api/fib/?n={n}
 ```
 
-n番目のフィボナッチ数を返します。
+n番目のフィボナッチ数を返します
 
 ## 使い方
 
-n番目のフィボナッチ数を取得するには、以下のGETリクエストを送信してください。
+n番目のフィボナッチ数を取得するには、以下のGETリクエストを送信してください
 
 ```
 https://infinite-retreat-29466-b58771f08bbf.herokuapp.com/api/fib/?n={n}
 ```
 
-`{n}`を取得したいフィボナッチ数のインデックスに置き換えてください。
+`{n}`を取得したいフィボナッチ数のインデックスに置き換えてください
 
 # 環境構築と実行方法
 
@@ -82,7 +83,7 @@ composer install
 
 ### 環境ファイルを設定
 
-`.env.example`を.`env`にコピーします。
+`.env.example`を.`env`にコピーする
 
 ```
 cp .env.example .env
@@ -98,7 +99,7 @@ php artisan key:generate
 ```
 php artisan serve
 ```
-curlコマンドでサーバーが起動していることを確認できたら環境構築成功です。
+curlコマンドでサーバーが起動していることを確認できたら環境構築成功です
 ```
 curl -X GET -H "Content-Type: application/json" "http://127.0.0.1:8000/api/fib?n=8"
 ```
