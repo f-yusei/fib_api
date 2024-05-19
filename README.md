@@ -3,8 +3,8 @@
 このプロジェクトは、LaravelフレームワークでビルドされたシンプルなREST APIです。指定したインデックスのフィボナッチ数を返す1つのエンドポイントを提供します。
 
 ## プロジェクト情報
-- PHP バージョン: 8.1
-- Laravel バージョン: 10.48.10
+- PHP バージョン: 8.3
+- Laravel バージョン: 10.x
 - デプロイ環境: Heroku
 - デプロイ先URL: https://infinite-retreat-29466-b58771f08bbf.herokuapp.com
 
