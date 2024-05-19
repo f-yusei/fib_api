@@ -12,13 +12,13 @@ class FibonacciController extends Controller
         $n = $request->query('n'); 
         $fibonacciNumber = $this->calculateFibonacci($n);
 
-        return response()->json(["result" => $fibonacciNumber], 200);
+        return response()->json(["result" => (string)$fibonacciNumber], 200);
     }
 
     private function calculateFibonacci($n)
     {
-        $a = 1;
-        $b = 0;
+        $a = '1';
+        $b = '0';
 
         for ($i = 1; $i <= $n; $i++) {
             $temp = $a;
