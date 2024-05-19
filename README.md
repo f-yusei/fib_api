@@ -75,8 +75,8 @@ https://infinite-retreat-29466-b58771f08bbf.herokuapp.com/api/fib/?n={n}
 ## 手順
 ### リポジトリをクローン
 ```
-git clone https://github.com/yourusername/fibonacci-api.git
-cd fibonacci-api
+git clone https://github.com/f-yusei/fib_api.git
+cd fib_api
 ```
 
 ### 依存関係をインストール
